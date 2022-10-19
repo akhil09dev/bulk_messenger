@@ -16,10 +16,10 @@ fs.createReadStream("contact.csv")
     parsed = true;
   });
 
-const media = MessageMedia.fromFilePath("img.png");
+// const media = MessageMedia.fromFilePath("img.png");
 
-msg2 =
-  "Exclusive benefits for you\n\n◇Internship vouchers on selected workshops\n◇Free exclusive NFTs on selected workshops\n◇Certificates for all participants\n\nFor further queries, please fill in: https://forms.gle/d3HJKNoUtPbS8myW7";
+// msg2 =
+//   "Exclusive benefits for you\n\n◇Internship vouchers on selected workshops\n◇Free exclusive NFTs on selected workshops\n◇Certificates for all participants\n\nFor further queries, please fill in: https://forms.gle/d3HJKNoUtPbS8myW7";
 
 
 // Use the saved values
@@ -48,8 +48,9 @@ async function Bulkmessage() {
   for (let i = 0; i < results.length; i++) {
     try {
       num = "";
-      msg1 =
-        "Hey [name], greetings from Team Tathva . We bring forth an exciting opportunity for you to be a part of Tathva'21 by registering for the Workshop series covering 8 thrilling topics. We would love to have you as a part of Tathva. Also, let everybody get a glimpse of this golden opportunity, share it with your friends and acquaintances and all those who aspire for an academic extravaganza!\n\nRegister now at https://tathva.org/workshops";
+
+      // ------------------------------------------------------------------EDIT HERE--------------------------------------------------
+      msg1 =" hlooo"
       const name = results[i].Name.split(" ")[0]
         .split(" ")
         .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
@@ -71,9 +72,8 @@ async function Bulkmessage() {
       }
       console.log(num);
       await client.sendMessage(num, msg1);
-      await client.sendMessage(num, msg2);
-      await client.sendMessage(num, media);
-      await timer(4000);
+    
+      await timer(3000);
     } catch (err) {
       failed.push(results[i]);
       console.log(`Message Not sent to ${results[i].Phone_Number}`);
@@ -94,7 +94,7 @@ async function Bulkmessage() {
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
 client.on("message_create", async (msg) => {
-  if (msg.to === "91<number_here>@c.us") {
+  if (msg.to === "919400167686@c.us") {
     if (msg.body === "!stop") {
       exit(0);
     }
